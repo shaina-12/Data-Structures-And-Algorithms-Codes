@@ -59,7 +59,7 @@ void Merge_Sort(int *arr, int n){
 }
 int main(){
     int n;
-    cout<<"Bubble Sort Algorithm"<<endl;
+    cout<<"Merge Sort Algorithm"<<endl;
     cout<<"Best Case Time Complexity is: O(n*logn)"<<endl;
     cout<<"Worst Case Time Complexity is: O(n*logn)"<<endl;
     cout<<"Space Complexity is: O(n)"<<endl;
