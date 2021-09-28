@@ -1,4 +1,3 @@
-import numpy as np
 def knapsack(maxWeight,weight,profit):
     totalProfit = 0
     fraction = [profit[i]/weight[i] for i in range(len(weight))]  
