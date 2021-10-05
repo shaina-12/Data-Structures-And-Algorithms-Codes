@@ -63,6 +63,16 @@ int main(){
     }
     totalProfit = FractionalKnapsack(profit,weight,fraction,selObj,maxWeight,obj);
     cout<<"Total profit in the knapsack is: "<<totalProfit<<endl;
+    cout<<"The weight of the objects: ";
+    for(int i=0;i<obj;i++){
+        cout<<weight[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"The profit associated with the object: ";
+    for(int i=0;i<obj;i++){
+        cout<<profit[i]<<" ";
+    }
+    cout<<endl;
     cout<<"The objects selected for knapsack is: ";
     for(int i=0;i<obj;i++){
         cout<<selObj[i]<<" ";
