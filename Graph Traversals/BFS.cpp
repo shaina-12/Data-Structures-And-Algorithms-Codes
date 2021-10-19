@@ -4,9 +4,9 @@
 using namespace std;
 class Graph
 {
-    public:
     int numV;
     list <int> *adjL;
+    public:
     Graph(int numV);  // Constructor
 
     // function to add an edge to graph
