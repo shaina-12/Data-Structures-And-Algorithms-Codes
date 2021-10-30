@@ -45,7 +45,7 @@ public:
             }
         }
         int index = ans[m][n];
-        cout<<index;
+        cout<<"The lenght of LCS is: "<<index<<endl;
         //char *res_seq = new char [index+1];
         //res_seq[index] = '\0';
         string res_seq = "";
