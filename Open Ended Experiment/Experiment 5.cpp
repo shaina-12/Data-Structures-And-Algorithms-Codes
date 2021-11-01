@@ -1,4 +1,5 @@
-//This code is contributed by Anjali Gaur
+//This code is contributed by Anjali Gaur.
+//This code is written in C language but by mistake it is saved in .cpp format in this repository. 
 #include <stdio.h>
 #include <conio.h>
 
