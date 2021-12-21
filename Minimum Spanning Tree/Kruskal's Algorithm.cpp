@@ -16,14 +16,14 @@ public:
             rank[i] = 1;
         }
     }
-    //find function
+    //find function - used for cycle detection so that there will be no cycles in the result
     int find(int i){
         if(parent[i] == -1){
             return i;
         }
         return parent[i] = find(parent[i]);
     }
-    //union function
+    //union function - for further calculation of MST
     int unite(int u, int v){
         int s1 = find(u);
         int s2 = find(v);
@@ -59,6 +59,7 @@ public:
         //initialize the DSU
         DSU s(numV);
         int ans = 0;
+        cout<<"Edge\tWeight\n";
         for(auto edge : edgelist){
             int u = edge[0];
             int v = edge[1];
@@ -66,6 +67,7 @@ public:
             //take the edge of MST if it does not form a cycle
             if(s.find(u) != s.find(v)){
                 s.unite(u,v);
+                cout<<u<<" - "<<v<<" \t"<<cost<<" \n";
                 ans += cost;
             }
         }
@@ -83,4 +85,3 @@ int main(){
     int cost = g.kruskalsMST();
     cout<<"The cost of MST is: "<<cost<<endl;
 }
-
