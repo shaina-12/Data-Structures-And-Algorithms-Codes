@@ -12,7 +12,9 @@ class Solution{
     public:
     // Function to check if given number n is a power of two.
     bool isPowerofTwo(long long n){
-        
+        if(n==0){
+          return false;
+        }
         // Your code here  
         int itr = 0;
         //long long num = 0
