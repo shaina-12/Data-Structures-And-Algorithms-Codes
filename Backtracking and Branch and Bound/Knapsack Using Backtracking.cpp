@@ -5,10 +5,10 @@ using namespace std;
 class Knapsack{
     int *weight;
     int *profit;
-    int n;
+    int n; // n - total items
     int capacity;
     vector <vector<int>> arr;
-    vector <int> cap;
+    vector <int> cap; // c - total capacity
 public:
     Knapsack(int N,int c){
         n = N;
