@@ -77,12 +77,10 @@ int Count_Leaf_Nodes(struct BTNode *root)
     {
         return 1;
     }
-    else
-    {
-    int ans1=Count_Nodes(root->lc);
-    int ans2=Count_Nodes(root->rc);
+    int ans1=Count_Leaf_Nodes(root->lc);
+    int ans2=Count_Leaf_Nodes(root->rc);
+    //printf("Shaina: %d",ans1+ans2);
     return ans1+ans2;
-    }
 }
 int main()
 {
