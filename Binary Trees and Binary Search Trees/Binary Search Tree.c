@@ -6,39 +6,21 @@ struct BSTNode
     struct BSTNode *lc;
     struct BSTNode *rc;
 };
-struct BSTNode *Insert(struct BSTNode *root)
+struct BSTNode* newNode(int data)
 {
-    struct BSTNode *n=(struct BSTNode*)malloc(sizeof(struct BSTNode));
-    printf("\nEnter the data to be inserted: ");
-    scanf("%d",&n->data);
-    n->lc=NULL;
-    n->rc=NULL;
-    struct BSTNode *temp=root;
-    struct BSTNode *temp2=NULL;
-    while(temp!=NULL)
-    {
-        temp2=temp;
-        if(temp->data<n->data)
-        {
-            temp=temp->rc;
-        }
-        else
-        {
-            temp=temp->lc;
-        }
-    }
-    if(temp2==NULL)
-    {
-        root=n;
-    }
-    else if(temp2->data<n->data)
-    {
-        temp2->rc=n;
-    }
+    struct BSTNode *temp = (struct BSTNode*)malloc(sizeof(struct BSTNode));
+    temp->data = data;
+    temp->lc = temp->rc = NULL;
+    return temp;
+}
+struct BSTNode *Insert(struct BSTNode *root,int data)
+{    
+    if(root == NULL)
+        return newNode(data);
+    if (data < root->data)
+        root->lc = Insert(root->lc, data);
     else
-    {
-        temp2->lc=n;
-    }
+        root->rc = Insert(root->rc, data);
     return root;
 }
 void Inorder_Traversal(struct BSTNode *root)
@@ -114,64 +96,55 @@ struct BSTNode *Delete(struct BSTNode *root,int item)
     if(item<root->data)
     {
         root->lc=Delete(root->lc,item);
+        return root;
     }
     else if(item>root->data)
     {
-  /      root->rc=Delete(root->rc,item);
+        root->rc=Delete(root->rc,item);
+        return root;
+    }
+    if(root->rc==NULL)
+    {
+            struct BSTNode *r=root->lc;
+            free(root);
+            return r;
+    }
+    else if(root->lc==NULL)
+    {
+            struct BSTNode *r=root->rc;
+            free(root);
+            return r;
     }
     else
     {
-        if(root->lc==NULL && root->rc==NULL)
-        {
-            root=NULL;
-            return root;
-        }
-        else if(root->lc!=NULL && root->rc==NULL)
-        {
-            struct BSTNode *r=root;
-            root=root->lc;
-            r->lc=NULL;
-            free(r);
-            return root;
-        }
-        else if(root->lc==NULL && root->rc!=NULL)
-        {
-            struct BSTNode *r=root;
-            root=root->rc;
-            r->rc=NULL;
-            free(r);
-            return root;
-        }
-        else
-        {
             struct BSTNode *r=root;
             struct BSTNode *t=root->rc;
-            root=t;
             while(t->lc!=NULL)
             {
+                r=t;
                 t=t->lc;
             }
-            t->lc=r->lc;
-            r->lc=NULL;
-            r->rc=NULL;
-            free(r);
+            if(r!=root){
+                r->lc = t->rc;
+            }
+            else{
+                r->rc = t->rc;
+            }
+            root->data = t->data;
+            free(t);
             return root;
-        }
     }
 }
 int main()
 {
     struct BSTNode *root=NULL;
     printf("\nEnter the elements of the binary search tree.");
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
-    root=Insert(root);
+    for(int i=0;i<7;i++){
+        int data;
+        printf("\nEnter the data to be inserted: ");
+        scanf("%d",&data);
+        root=Insert(root,data);
+    }
     printf("\nInorder traversal of the Binary Search Tree is: ");
     Inorder_Traversal(root);
     printf("\nPreorder traversal of the Binary Search Tree is: ");
