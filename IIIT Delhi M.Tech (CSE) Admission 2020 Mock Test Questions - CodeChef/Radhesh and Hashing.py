@@ -1,3 +1,7 @@
+# The problem statement is given in this link: https://www.codechef.com/IIITDS20/problems/HASHRAD
+
+# Solution
+
 # cook your dish here
 import itertools as it
 
